@@ -12,12 +12,12 @@
 <body>
 
     <header>
-        <h1>じゃんけん</h1>
+        <h1 class="title">じゃんけん</h1>
     </header>
 
     <main>
         <div>
-            <p>いざ勝負！</p>
+            <p class="subtitle">いざ勝負！</p>
         </div>
         <ul class="mainarea">
             <li id="gu_btn" class="btn_box"><img src="img/Goo.png" alt="グー" width="100%"></li>
@@ -25,12 +25,26 @@
             <li id="par_btn" class="btn_box"><img src="img/Par.png" alt="パー" width="100%"></li>
         </ul>
         <div class="PCHands">
-            <p>コンピュータの出した手は？</p>
+            <p class="subtitle">コンピュータの出した手は？</p>
             <p><span id="pc_hands">なに？</span></p>
         </div>
         <div class="judgement">
-            <p>判定は・・・</p>
+            <p class="subtitle">判定は・・・</p>
             <p><span id="judgement">？？</span></p>
+        </div>
+
+        <div class="counter">
+            <p class="subtitle">勝敗カウンター</p>
+            <ul>
+                <li>勝ち</li>
+                <li>あいこ</li>
+                <li>負け</li>
+            </ul>
+            <ul>
+                <li id="wincounter"></li>
+                <li id="drawcounter"></li>
+                <li id="losecounter"></li>
+            </ul>
         </div>
 
         <div  class="reset">
@@ -51,7 +65,7 @@
         function setPcHand(){
             let r = Math.ceil(Math.random()*3);
             if(r == 1){
-            view = gu_img;
+                view = gu_img;
             }
             if(r == 2){
                 view = cho_img;
@@ -65,7 +79,25 @@
         //2.あなたの手をセットして勝敗判定
         let you;
         let judge;
-        let wincount;
+        let wincount = 0;
+        let drawcount = 0;
+        let losecount = 0;
+
+        //カウンターを表示
+        function showcounter(){
+            $("#wincounter").html(wincount);
+            $("#drawcounter").html(drawcount);
+            $("#losecounter").html(losecount);
+        }
+
+        //カウンターをリセット
+        function resetcounter(){
+            wincount = 0;
+            drawcount = 0;
+            losecount = 0;
+        }
+        
+        showcounter();
 
         //グーボタンが押された
         $("#gu_btn").on("click",function () {
@@ -73,17 +105,21 @@
             view = setPcHand();
             if(view==gu_img){
                 judge='あいこ';
+                drawcount +=1;
             }
             if(view==cho_img){
                 judge='勝ち';
+                wincount += 1;
             }
             if(view==par_img){
                 judge='負け';
+                losecount += 1;
             }
             $("li").css("border","1px solid #666");
             $("#gu_btn").css("border","1px solid #FF0000");
             $('#pc_hands').html(view);
             $('#judgement').html(judge);
+            showcounter();
         }
         )
         //チョキボタンが押された
@@ -92,17 +128,21 @@
             view = setPcHand();
             if(view==gu_img){
                 judge='負け';
+                losecount += 1;
             }
             if(view==cho_img){
                 judge='あいこ';
+                drawcount +=1;
             }
             if(view==par_img){
                 judge='勝ち';
+                wincount += 1;
             }
             $("li").css("border","1px solid #666");
             $("#cho_btn").css("border","1px solid #FF0000");
             $('#pc_hands').html(view);
             $('#judgement').html(judge);
+            showcounter();
         }
         )
         //パーボタンが押された
@@ -111,22 +151,28 @@
             view = setPcHand();
             if(view==gu_img){
                 judge='勝ち';
+                wincount += 1;
             }
             if(view==cho_img){
                 judge='負け';
+                losecount += 1;
             }
             if(view==par_img){
                 judge='あいこ';
+                drawcount +=1;
             }
             $("li").css("border","1px solid #666");
             $("#par_btn").css("border","1px solid #FF0000");
             $('#pc_hands').html(view);
             $('#judgement').html(judge);
+            showcounter();
         }
         )
         
         $("#reset_btn").on("click",function(){
-            location.reload();
+            // location.reload();
+            resetcounter();
+            showcounter();
         })
 
 
