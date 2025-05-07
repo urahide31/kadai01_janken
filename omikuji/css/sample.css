@@ -21,7 +21,7 @@ p{
     font-size:200%;
     text-align: center;
     border-bottom:1px solid #fff;
-    height:200px;
+    /* height:200px; */
 }
 ul{
     padding: 0;
@@ -41,4 +41,32 @@ li{
 li:hover{
     background: #0066CC;
     color:#fff;
+}
+
+.PCHands{
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+}
+
+.judgement{
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+}
+
+.reset{
+    display: flex;
+    justify-content: center;
+}
+
+.button{
+    width: 150px;
+    font-size: 20px;
+    background-color: #f0f0f0;
+    border: 1px solid #666;
+    margin: 10px;
+    padding: 10px;
 }

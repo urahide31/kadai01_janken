@@ -16,162 +16,130 @@
     </header>
 
     <main>
+        <div>
+            <p>じゃーんけーん</p>
+        </div>
         <ul class="mainarea">
             <li id="gu_btn" class="btn_box"><img src="img/Goo.png" alt="グー" width="100%"></li>
             <li id="cho_btn" class="btn_box"><img src="img/choki.png" alt="チョキ" width="100%"></li>
             <li id="par_btn" class="btn_box"><img src="img/Par.png" alt="パー" width="100%"></li>
         </ul>
-        <div>コンピュータの出した手は？「<span id="pc_hands">なに？</span>」</div>
-        <div>判定は・・・<span id="judgement">？？</span></div>
+        <div class="PCHands">
+            <p>コンピュータの出した手は？</p>
+            <p><span id="pc_hands">なに？</span></p>
+        </div>
+        <div class="judgement">
+            <p>判定は・・・</p>
+            <p><span id="judgement">？？</span></p>
+        </div>
+
+        <div  class="reset">
+            <button id="reset_btn" class="button">リセット</button>
+        </div>
     </main>
 
     <footer></footer>
     <script>
      
-        //2.CPUの手をRandomでセットして表示
+        //1.CPUの手をRandomでセット
         let r = Math.ceil(Math.random()*3);
         let view
-        // if(r == 1){
-        //     view = 'グー';
-        // }
-        // if(r == 2){
-        //     view = 'チョキ';
-        // }
-        // if(r == 3){
-        //     view = 'パー';
-        // }
-        // alert(view);
+      
+        //2.あなたの手をセットして勝敗判定
+        let you;
+        let judge;
 
-        // $("#pc_hands").html(view);
-
-           //1.あなたの手を判定
-           let you;
-           let judge;
-
-            //グーボタンが押された
-            $("#gu_btn").on("click",function () {
-                you = 'グー';
-                let r = Math.ceil(Math.random()*3);
-                let view
-                if(r == 1){
-                   view = 'グー';
-                }
-                if(r == 2){
-                    view = 'チョキ';
-                }
-                if(r == 3){
-                    view = 'パー';
-                }
-                if(view=='グー'){
-                    judge='あいこ';
-                }
-                if(view=='チョキ'){
-                    judge='勝ち';
-                }
-                if(view=='パー'){
-                    judge='負け';
-                }
-                $("li").css("border","1px solid #666");
-                $("#gu_btn").css("border","2px solid #000000");
-                $('#pc_hands').html(view);
-                $('#judgement').html(judge);
+        //グーボタンが押された
+        $("#gu_btn").on("click",function () {
+            you = 'グー';
+            let r = Math.ceil(Math.random()*3);
+            let view
+            if(r == 1){
+                view = 'グー';
             }
-            )
-            //チョキボタンが押された
-            $("#cho_btn").on("click",function () {
-                you = 'チョキ';
-                let r = Math.ceil(Math.random()*3);
-                let view
-                if(r == 1){
-                   view = 'グー';
-                }
-                if(r == 2){
-                    view = 'チョキ';
-                }
-                if(r == 3){
-                    view = 'パー';
-                }
-                if(view=='グー'){
-                    judge='負け';
-                }
-                if(view=='チョキ'){
-                    judge='あいこ';
-                }
-                if(view=='パー'){
-                    judge='勝ち';
-                }
-                $("li").css("border","1px solid #666");
-                $("#cho_btn").css("border","2px solid #000000");
-                $('#pc_hands').html(view);
-                $('#judgement').html(judge);
+            if(r == 2){
+                view = 'チョキ';
             }
-            )
-            //パーボタンが押された
-            $("#par_btn").on("click",function () {
-                you = 'パー';
-                let r = Math.ceil(Math.random()*3);
-                let view
-                if(r == 1){
-                   view = 'グー';
-                }
-                if(r == 2){
-                    view = 'チョキ';
-                }
-                if(r == 3){
-                    view = 'パー';
-                }
-                if(view=='グー'){
-                    judge='勝ち';
-                }
-                if(view=='チョキ'){
-                    judge='負け';
-                }
-                if(view=='パー'){
-                    judge='あいこ';
-                }
-                $("li").css("border","1px solid #666");
-                $("#par_btn").css("border","2px solid #000000");
-                $('#pc_hands').html(view);
-                $('#judgement').html(judge);
+            if(r == 3){
+                view = 'パー';
             }
-            )
-
-        //3.判定
+            if(view=='グー'){
+                judge='あいこ';
+            }
+            if(view=='チョキ'){
+                judge='勝ち';
+            }
+            if(view=='パー'){
+                judge='負け';
+            }
+            $("li").css("border","1px solid #666");
+            $("#gu_btn").css("border","2px solid #000000");
+            $('#pc_hands').html(view);
+            $('#judgement').html(judge);
+        }
+        )
+        //チョキボタンが押された
+        $("#cho_btn").on("click",function () {
+            you = 'チョキ';
+            let r = Math.ceil(Math.random()*3);
+            let view
+            if(r == 1){
+                view = 'グー';
+            }
+            if(r == 2){
+                view = 'チョキ';
+            }
+            if(r == 3){
+                view = 'パー';
+            }
+            if(view=='グー'){
+                judge='負け';
+            }
+            if(view=='チョキ'){
+                judge='あいこ';
+            }
+            if(view=='パー'){
+                judge='勝ち';
+            }
+            $("li").css("border","1px solid #666");
+            $("#cho_btn").css("border","2px solid #000000");
+            $('#pc_hands').html(view);
+            $('#judgement').html(judge);
+        }
+        )
+        //パーボタンが押された
+        $("#par_btn").on("click",function () {
+            you = 'パー';
+            let r = Math.ceil(Math.random()*3);
+            let view
+            if(r == 1){
+                view = 'グー';
+            }
+            if(r == 2){
+                view = 'チョキ';
+            }
+            if(r == 3){
+                view = 'パー';
+            }
+            if(view=='グー'){
+                judge='勝ち';
+            }
+            if(view=='チョキ'){
+                judge='負け';
+            }
+            if(view=='パー'){
+                judge='あいこ';
+            }
+            $("li").css("border","1px solid #666");
+            $("#par_btn").css("border","2px solid #000000");
+            $('#pc_hands').html(view);
+            $('#judgement').html(judge);
+        }
+        )
         
-        if(you == 'グー' && view == 'グー'){
-            judge='あいこ';
-        }
-        if(you == 'グー' && view == 'パー'){
-            judge='負け';
-        }
-        if(you == 'グー' && view == 'チョキ'){
-            judge='勝ち';
-        }
-
-        if(you == 'チョキ' && view == 'グー'){
-            judge='負け';
-        }
-        if(you == 'チョキ' && view == 'パー'){
-            judge='勝ち';
-        }
-        if(you == 'チョキ' && view == 'チョキ'){
-            judge='あいこ';
-        }
-        
-        if(you == 'パー' && view == 'グー'){
-            judge='勝ち';
-        }
-        if(you == 'パー' && view == 'パー'){
-            judge='あいこ';
-        }
-        if(you == 'パー' && view == 'チョキ'){
-            judge='負け';
-        }
-        // alert(judge)
-
-        //4.表示処理
-        $('#judgement').html(judge);
-   
+        $("#reset_btn").on("click",function(){
+            location.reload();
+        })
 
 
    
