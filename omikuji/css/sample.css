@@ -36,6 +36,7 @@ li{
     background-color: #FFF;
     display:table-cell;  /* 定義 */
     cursor: pointer;
+    width: 33.3%;
 }
 li:hover{
     background: #0066CC;

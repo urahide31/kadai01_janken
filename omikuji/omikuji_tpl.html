@@ -15,14 +15,40 @@
 
 <main>
     <ul>
-        <li id="hoshi">おみくじを引く</li>
+        <li id="omikuji">おみくじを引く</li>
     </ul>
     <p id="echo"></p>
 </main>
 
 <footer>フッター</footer>
 <script>
+$("#omikuji").on("click",function(){
+    // alert("ok");
+    //1.乱数作る（1〜５）
+    const r = Math.ceil(Math.random()*5);
+    
+    //2.if分岐処理
+    let view = "";
+    if(r == 1){
+        view = '<img src="img/daikichi.jpg" width="200">';
+    }
+    if(r == 2){
+        view = '<img src="img/chukichi.jpg" width="200">';
+    }
+    if(r == 3){
+        view = '<img src="img/shokichi.jpg" width="200">';
+    }
+    if(r == 4){
+        view = '<img src="img/kichi.jpg" width="200">';
+    }
+    if(r == 5){
+        view = '<img src="img/kyou.jpg" width="200">';
+    }
 
+    //3.表示処理
+    $("#echo").html(view);
+}
+);
 
 
 
