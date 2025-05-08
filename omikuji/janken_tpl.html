@@ -35,16 +35,28 @@
 
         <div class="counter">
             <p class="subtitle">勝敗カウンター</p>
-            <ul>
+            <div class="ctr_board">
+                <div class="ctr_board_row">
+                    <p class="ctr_title">勝ち</p>
+                    <p class="ctr_title">あいこ</p>
+                    <p class="ctr_title">負け</p>
+                </div>
+                <div class="ctr_board_score">
+                    <p id="wincounter" class="ctr_score"></p>
+                    <p id="drawcounter" class="ctr_score"></p>
+                    <p id="losecounter" class="ctr_score"></p>
+                </div>
+            </div>
+            <!-- <ul>
                 <li>勝ち</li>
                 <li>あいこ</li>
                 <li>負け</li>
             </ul>
             <ul>
-                <li id="wincounter"></li>
-                <li id="drawcounter"></li>
-                <li id="losecounter"></li>
-            </ul>
+                <li></li>
+                <li ></li>
+                <li id="losecounter"></li> -->
+            <!-- </ul> -->
         </div>
 
         <div  class="reset">
@@ -61,6 +73,10 @@
         const gu_img = '<img src="img/Goo.png" width="300px">';
         const cho_img = '<img src="img/choki.png" width="300px">';
         const par_img = '<img src="img/par.png" width="300px">';
+
+        const win_img = '<img src="img/win.png" width="300px">';
+        const draw_img = '<img src="img/draw.jpeg" width="300px">';
+        const lose_img = '<img src="img/lose.png" width="300px">';
         
         function setPcHand(){
             let r = Math.ceil(Math.random()*3);
@@ -104,15 +120,15 @@
             you = 'グー';
             view = setPcHand();
             if(view==gu_img){
-                judge='あいこ';
+                judge= draw_img;
                 drawcount +=1;
             }
             if(view==cho_img){
-                judge='勝ち';
+                judge=win_img;
                 wincount += 1;
             }
             if(view==par_img){
-                judge='負け';
+                judge=lose_img;
                 losecount += 1;
             }
             $("li").css("border","1px solid #666");
@@ -127,15 +143,15 @@
             you = 'チョキ';
             view = setPcHand();
             if(view==gu_img){
-                judge='負け';
+                judge=lose_img;
                 losecount += 1;
             }
             if(view==cho_img){
-                judge='あいこ';
+                judge=draw_img;
                 drawcount +=1;
             }
             if(view==par_img){
-                judge='勝ち';
+                judge=win_img;
                 wincount += 1;
             }
             $("li").css("border","1px solid #666");
@@ -150,15 +166,15 @@
             you = 'パー';
             view = setPcHand();
             if(view==gu_img){
-                judge='勝ち';
+                judge=win_img;
                 wincount += 1;
             }
             if(view==cho_img){
-                judge='負け';
+                judge=lose_img;
                 losecount += 1;
             }
             if(view==par_img){
-                judge='あいこ';
+                judge=draw_img;
                 drawcount +=1;
             }
             $("li").css("border","1px solid #666");

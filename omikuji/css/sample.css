@@ -8,6 +8,10 @@ header{
     background-color: #fff;
     border-bottom: 1px solid #ccc;
     text-align: center;
+    background-image: url(../img/header_bg.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 500px ;
 }
 main{
     border-bottom:1px solid #ccc;
@@ -70,6 +74,36 @@ li:hover{
     text-align: center;
 }
 
+.ctr_board{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #000000;
+}
+
+.ctr_board_row{
+    display: flex;
+}
+
+.ctr_title{
+    width: 33.33%;
+    background-color: #666 ;
+    border: 1px solid #000000;
+    margin: 0;
+    font-size: 32px;
+    color: white;
+}
+
+.ctr_board_score{
+    display: flex;
+}
+
+.ctr_score{
+    width: 33.33%;
+    border: 1px solid #000000;
+    margin: 0;
+    font-size: 32px;
+}
+
 .reset{
     display: flex;
     justify-content: center;
@@ -78,9 +112,14 @@ li:hover{
 .button{
     width: 150px;
     font-size: 20px;
-    background-color: #f0f0f0;
-    border: 1px solid #666;
+    background-color: #ffd61a;
+    border: 2px solid #ffd61a;
+    color: white;
     margin: 10px;
     padding: 10px;
     cursor: pointer;
+}
+
+.button:hover{
+    opacity: 0.6;
 }
