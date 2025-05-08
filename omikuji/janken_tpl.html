@@ -66,17 +66,38 @@
 
     <footer></footer>
     <script>
-     
+        //0.定数・変数を定義
+        const gu_img = '<img src="img/Goo.png" width="300px">'; //グー画像
+        const cho_img = '<img src="img/choki.png" width="300px">'; //チョキ画像
+        const par_img = '<img src="img/par.png" width="300px">'; //パー画像
+
+        const win_img = '<img src="img/win.png" width="300px">'; //Win画像
+        const draw_img = '<img src="img/draw.jpeg" height="125px">'; //draw画像、高さ揃える
+        const lose_img = '<img src="img/lose.png" width="300px">'; //Lose画像
+
+        let you; //自分が押した手
+        let judge; //判定結果
+        let wincount = 0; //勝利数カウント（初期値0）
+        let drawcount = 0; //引き分け数カウント（初期値0）
+        let losecount = 0; //負け数カウント（初期値0）
+        let view; //CPUの手を表示用
+
+        //カウンターを表示する関数を定義
+        function showcounter(){
+            $("#wincounter").html(wincount);
+            $("#drawcounter").html(drawcount);
+            $("#losecounter").html(losecount);
+        }
+
+        //カウンターをリセットする関数を定義
+        function resetcounter(){
+            wincount = 0;
+            drawcount = 0;
+            losecount = 0;
+        }
+
         //1.CPUの手をRandomでセット
         let r = Math.ceil(Math.random()*3);
-        let view;
-        const gu_img = '<img src="img/Goo.png" width="300px">';
-        const cho_img = '<img src="img/choki.png" width="300px">';
-        const par_img = '<img src="img/par.png" width="300px">';
-
-        const win_img = '<img src="img/win.png" width="300px">';
-        const draw_img = '<img src="img/draw.jpeg" width="300px">';
-        const lose_img = '<img src="img/lose.png" width="300px">';
         
         function setPcHand(){
             let r = Math.ceil(Math.random()*3);
@@ -92,27 +113,7 @@
             return view;
         }
         
-        //2.あなたの手をセットして勝敗判定
-        let you;
-        let judge;
-        let wincount = 0;
-        let drawcount = 0;
-        let losecount = 0;
-
-        //カウンターを表示
-        function showcounter(){
-            $("#wincounter").html(wincount);
-            $("#drawcounter").html(drawcount);
-            $("#losecounter").html(losecount);
-        }
-
-        //カウンターをリセット
-        function resetcounter(){
-            wincount = 0;
-            drawcount = 0;
-            losecount = 0;
-        }
-        
+        //カウンターを初期値で表示しておく
         showcounter();
 
         //グーボタンが押された
@@ -134,7 +135,7 @@
             $("li").css("border","1px solid #666");
             $("#gu_btn").css("border","1px solid #FF0000");
             $('#pc_hands').html(view);
-            $('#judgement').html(judge);
+            $('#judgement').html(judge).hide().fadeIn(1000);
             showcounter();
         }
         )
@@ -157,7 +158,7 @@
             $("li").css("border","1px solid #666");
             $("#cho_btn").css("border","1px solid #FF0000");
             $('#pc_hands').html(view);
-            $('#judgement').html(judge);
+            $('#judgement').html(judge).hide().fadeIn(1000);
             showcounter();
         }
         )
@@ -180,11 +181,12 @@
             $("li").css("border","1px solid #666");
             $("#par_btn").css("border","1px solid #FF0000");
             $('#pc_hands').html(view);
-            $('#judgement').html(judge);
+            $('#judgement').html(judge).hide().fadeIn(1000);
             showcounter();
         }
         )
         
+        //リセットボタンを押した時の処理
         $("#reset_btn").on("click",function(){
             // location.reload();
             resetcounter();
